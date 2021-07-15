@@ -35,14 +35,18 @@ public class Repository {
         users.add(user3);
     }
 
+    // get users
     public List<User> getUsers() {
         return users;
     }
 
+    // get formatted user names
     public List<String> getFormattedUserNames() {
 
+        // create list of user names
         List<String> userNames = new ArrayList<>(users.size());
 
+        // build list of names
         for (User user : users) {
 
             String name;
@@ -58,7 +62,7 @@ public class Repository {
 
             userNames.add(name);
         }
-        
+
         return userNames;
     }
 }
