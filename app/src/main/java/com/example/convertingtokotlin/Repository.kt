@@ -31,9 +31,11 @@ object Repository {
         val user2 = User("John", null)
         val user3 = User("Anne", "Doe")
 
-        // create list of users
-        _users.add(user1)
-        _users.add(user2)
-        _users.add(user3)
+        // create list of users using scope function
+        _users.apply {
+            add(user1)
+            add(user2)
+            add(user3)
+        }
     }
 }
