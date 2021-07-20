@@ -12,26 +12,16 @@ object Repository {
     }
 
     // get formatted user names
-    val formattedUserNames: List<String?> get() {
+    val formattedUserNames: List<String>
+        get() {
 
-        // create list of user names
-        val userNames = ArrayList<String>(users.size)
-
-        // build list of names using "destructing declaration"
-        for ((firstName, lastName) in users) {
-
-            // format display name
-            val name = if (lastName != null) {
-                if (firstName != null) "$firstName $lastName"
-                else lastName
-            } else firstName ?: "Unknown"
-
-            // add formatted name to list
-            userNames.add(name)
+            return users.map{ user ->
+                if (user.lastName != null) {
+                    if (user.firstName != null) "$user.firstName $user.lastName"
+                    else user.lastName ?: "Unknown"
+                } else user.firstName ?: "Unknown"
+            }
         }
-
-        return userNames
-    }
 
     // initialize some example users
     init {
