@@ -1,21 +1,18 @@
 package com.example.convertingtokotlin
 
-import java.util.*
-
 // object is singleton
 object Repository {
 
     // get list of users
-    private val users = mutableListOf<User>()
-    fun getUsers(): List<User> {
-        return users
-    }
+    private val _users = mutableListOf<User>()
+    val users: List<User>
+        get() = _users
 
     // get formatted user names
     val formattedUserNames: List<String>
         get() {
 
-            return users.map{ user ->
+            return _users.map{ user ->
                 if (user.lastName != null) {
                     if (user.firstName != null) "$user.firstName $user.lastName"
                     else user.lastName ?: "Unknown"
@@ -32,8 +29,8 @@ object Repository {
         val user3 = User("Anne", "Doe")
 
         // create list of users
-        users.add(user1)
-        users.add(user2)
-        users.add(user3)
+        _users.add(user1)
+        _users.add(user2)
+        _users.add(user3)
     }
 }
