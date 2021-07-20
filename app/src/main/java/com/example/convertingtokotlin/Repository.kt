@@ -14,6 +14,7 @@ object Repository {
 
     // get list of users
     private val _users = mutableListOf<User>()
+    // private val _users = mutableListOf(User("Jane", ""), User("John", null), User("Anne", "Doe")) todo alternate approach obviates init {} block
     val users: List<User>
         get() = _users
 
