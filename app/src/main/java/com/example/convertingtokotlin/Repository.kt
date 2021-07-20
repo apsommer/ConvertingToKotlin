@@ -1,5 +1,14 @@
 package com.example.convertingtokotlin
 
+// extension property
+val User.formattedName: String
+    get() {
+        return if (lastName != null) {
+            if (firstName != null) "$firstName $lastName"
+            else lastName ?: "Unknown"
+        } else firstName ?: "Unknown"
+    }
+
 // object is singleton
 object Repository {
 
@@ -11,13 +20,7 @@ object Repository {
     // get formatted user names
     val formattedUserNames: List<String>
         get() {
-
-            return _users.map{ user ->
-                if (user.lastName != null) {
-                    if (user.firstName != null) "$user.firstName $user.lastName"
-                    else user.lastName ?: "Unknown"
-                } else user.firstName ?: "Unknown"
-            }
+            return _users.map{ user -> user.formattedName }
         }
 
     // initialize some example users
